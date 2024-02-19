@@ -1,0 +1,31 @@
+@import url("./styles/setupGame.css");
+@import url("./styles/game.css");
+@import url("./styles/historicoJogagas.css");
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;500;700&display=swap');
+
+:root {
+    --azul-escuro:#0097E6;
+    --azul-claro: #2BA9EA;
+    --cor-cinza: #828282;
+    --cor-verde: #45F391;
+    --cor-branca: #FFFFFF;
+
+    --font-principal: "Ubuntu", sans-serif;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: var(--font-principal);
+
+}
+
+.container-game {
+    display: flex;
+    justify-content: space-between;
+    box-sizing: border-box;
+}
+

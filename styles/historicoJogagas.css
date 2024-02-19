@@ -1,0 +1,45 @@
+.historico-de-jogadas {
+    background-color: var(--azul-escuro);
+    padding: 20px 25px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    width: 30%;
+}
+
+.titulo-historico-partidas {
+    color: var(--cor-branca);
+    font-weight: 700;
+    font-size: 16px;
+    margin-bottom: 10px;
+}
+
+.historico-partidas {
+    width: 90%;
+    background-color: var(--cor-branca);
+    display: flex;
+    align-items: center;
+    padding: 0px 10px;
+    gap: 5%;
+    border-radius: 10px;
+}
+
+.span-jogada {
+    font-size: 48px;
+    font-weight: 700;
+    color: var(--cor-cinza);
+}
+
+.titulo-jogador {
+    font-weight: 700;
+    font-size: 14px;
+    color: var(--cor-cinza);
+}
+
+.texto-historico {
+    font-weight: 400;
+    font-size: 14px;
+    color: var(--azul-escuro);
+}

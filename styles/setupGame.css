@@ -1,0 +1,165 @@
+.game-setup {
+    background-color: var(--azul-escuro);
+    padding: 20px 25px;
+    width: 30%;
+}
+
+.contaier-players {
+    margin: solid 1px red;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.players {
+    width: 90%;
+    padding: 10px 15px;
+    background-color: var(--cor-branca);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 10px;
+    font-weight: 16px;
+    color: var(--cor-cinza);
+}
+
+/* Esconde o checkbox */
+.toggle {
+    display: none;
+}
+
+/* Estiliza o rótulo para parecer com um botão de alternância */
+.toggle-label {
+    display: inline-block;
+    width: 60px;
+    height: 30px;
+    background-color: var(--azul-escuro);
+    border-radius: 15px;
+    position: relative;
+    cursor: pointer;
+    border: 1px solid white;
+}
+
+/* Estiliza o rótulo quando o checkbox estiver marcado */
+.toggle:checked + .toggle-label {
+    background-color: var(--azul-escuro); /* Altere a cor de fundo conforme necessário */
+}
+
+/* Adiciona o marcador para indicar o estado do checkbox */
+.toggle-label::after {
+    content: '';
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    width: 26px;
+    height: 26px;
+    background-color: white;
+    border-radius: 50%;
+    transition: left 0.3s; /* Adiciona uma animação suave */
+}
+
+/* Move o marcador para a direita quando o checkbox está marcado */
+.toggle:checked + .toggle-label::after {
+    left: calc(100% - 28px);
+}
+
+.tipo-de-partida {
+    width: 100%;
+    margin-top: 40px;
+    display: flex;
+    flex-direction: column;
+    gap: 19px;
+}
+
+.tipo-titulo {
+    color: var(--cor-verde);
+    font-weight: 700;
+    font-size: 16px;
+    text-align: center;
+}
+
+.melhor-de {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 16px;
+    color: var(--cor-branca);
+    font-weight: 400;
+}
+
+.btn-jogar {
+    width: 100%;
+    margin-top: 30px;
+    padding: 10px 0px;
+    background-color: var(--cor-verde);
+    font-weight: 500;
+    font-size: 24px;
+    color: var(--cor-branca);
+    border: none;
+    border-radius: 10px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
+}
+
+.historico-de-partidas {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    margin-top: 40px;
+}
+
+.titulo-historico {
+    text-align: center;
+    color: var(--cor-branca);
+    font-weight: 700;
+    font-size: 16px;
+}
+
+.historico-dados {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.historico-vencedor {
+    width: 50%;
+    background-color: var(--cor-branca);
+    border-radius: 10px;
+    padding: 7px;
+}
+
+.vencedor-titulo {
+    font-weight: 700;
+    font-size: 14px;
+    color: var(--cor-verde);
+}
+
+.texto-quadrado {
+    font-weight: 400;
+    font-size: 14px;
+    color: var(--cor-cinza);
+}
+
+.texto-cenario {
+    font-weight: 400;
+    font-size: 14px;
+    color: var(--cor-branca);
+}
+
+.cenario {
+    height: 50px;
+    width: 50px;
+    background-color: var(--cor-branca);
+}
+
+.btn-reiniciar {
+    width: 100%;
+    margin-top: 30px;
+    padding: 10px 0px;
+    font-weight: 500;
+    font-size: 24px;
+    color: var(--azul-escuro);
+    border-radius: 10px;
+    border: none;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
+}
