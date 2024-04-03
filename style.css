@@ -1,6 +1,3 @@
-@import url("./styles/setupGame.css");
-@import url("./styles/game.css");
-@import url("./styles/historicoJogagas.css");
 @import url('https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;500;700&display=swap');
 
 :root {
@@ -13,19 +10,358 @@
     --font-principal: "Ubuntu", sans-serif;
 }
 
-* {
-    margin: 0;
-    padding: 0;
-}
-
 body {
     font-family: var(--font-principal);
-
 }
 
-.container-game {
+.container {
+    width: 100vw;
+    height: 100vh;
     display: flex;
-    justify-content: space-between;
-    box-sizing: border-box;
 }
 
+.small-container {
+    width: 25%;
+    height: 100%;
+    background-color: var(--azul-escuro);
+    padding: 50px 35px;
+}
+
+.big-container {
+    width: 50%;
+    height: 100%;
+    background-color: var(--azul-claro);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 70px;
+    padding: 50px 0px;
+}
+
+.player-field {
+    height: 48px;
+    width: 317px;
+    border-radius: 10px;
+    border: none;
+    outline: none;
+    padding-left: 15px;
+    border: 1px solid white;
+}
+
+.player-field:focus {
+    border: 1px solid var(--azul-claro);
+}
+
+.box-player-field {
+    height: 48px;
+    width: 317px;
+    border-radius: 10px;
+    background-color: white;
+    display: flex;
+    align-items: center;
+    padding-right: 9px;
+    border: 1px solid white;
+    margin-top: 20px;
+}
+
+.box-player-field:focus-within {
+    border: 1px solid var(--azul-claro);
+}   
+
+.player-field-two {
+    border: none;
+    outline: none;
+    height: 100%;
+    width: 100%;
+    background-color: transparent;
+    padding-left: 15px;
+}
+
+.switcher {
+    width: 56px;
+    min-width: 56px;
+    height: 32px;
+    border-radius: 100px;
+    background-color: var(--azul-escuro);
+    display: flex;
+    align-items: center;
+    padding: 4px;
+    position: relative;
+    cursor: pointer;
+    border: 2px solid var(--azul-escuro);
+}
+
+.switcher-active .switcher-ball {
+    right: 4px;
+}
+
+
+.switcher-ball {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    background-color: white;
+    position: absolute;
+    transition: 300ms;
+    right: 26px;
+}
+
+.box-game-type {
+    margin-top: 40px;
+}
+
+.game-type-title {
+    color: var(--cor-verde);
+    font-weight: 700;
+    text-align: center;
+}
+
+.game-type-wrapper {
+    margin-top: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.game-type-md-text {
+    color: var(--cor-branca);
+    font-weight: 400;
+}
+
+.switcher-white {
+    border: 2px solid var(--cor-branca);
+}
+
+.button-player-wrapper {
+    margin-top: 45px;
+}
+
+.button {
+    width: 100%;
+    height: 54px;
+    font-size: 24px;
+    border-radius: 10px;
+    border: none;
+    box-shadow: 0 4px 4px #0000004D;
+    font-weight: 500;
+    transition: 300ms;
+}
+
+.button:hover {
+    box-shadow: none;
+}
+
+.button-green {
+    background-color: var(--cor-verde);
+    color: var(--cor-branca);
+}
+
+.match-history-box {
+    margin-top: 38px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.match-history-title {
+    color: var(--cor-branca);
+    text-align: center;
+    font-weight: 700;
+}
+
+.match-history-list {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    overflow: auto;
+    max-height: 190px;
+    padding: 5px;
+}
+
+/* width */
+::-webkit-scrollbar {
+    width: 5px;
+  }
+  
+  /* Track */
+  ::-webkit-scrollbar-track {
+    background: #f1f1f1;
+  }
+  
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: #888;
+  }
+  
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: #555;
+  }
+
+.match-history-scenery-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.match-history-winner-box {
+    width: 168px;
+    height: 50px;
+    background-color: var(--cor-branca);
+    border-radius: 10px;
+    padding: 0 15px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.winner-label {
+    color: var(--cor-verde);
+    font-size: 14px;
+    font-weight: 700;
+}
+
+.winner-name {
+    font-weight: 400;
+    font-size: 14px;
+    color: var(--cor-cinza);
+}
+
+.match-history-separetor {
+    color: var(--cor-branca);
+    font-weight: 400;
+}
+
+.scenary-box {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    width: 510px;
+}
+
+.scenary-field {
+    width: 160px;
+    height: 160px;
+    background-color: var(--cor-branca);
+    border-radius: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 130px;
+    color: var(--cor-cinza);
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.scenary-small {
+    gap: 2px;
+    width: 49px;
+}
+
+.scenary-small .scenary-field {
+    width: 15px;
+    height: 15px;
+    font-size: 12px;
+    border-radius: 2px;
+}   
+
+.reset-button-wrapper {
+    margin-top: 98px;
+}
+
+.button-white {
+    font-weight: 500;
+    color: var(--azul-escuro);
+}
+
+.scoreboard {
+    background-color: var(--cor-branca);
+    width: 70%;
+    height: 100px;
+    border-radius: 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 11px 0px;
+}
+
+.score-board-title {
+    font-size: 25px;
+    color: var(--azul-escuro);
+    font-weight: 700;
+}
+
+.score-wrapper {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 60%;
+}
+
+.score {
+    color: var(--azul-escuro);
+    font-size: 48px;
+    font-weight: 700;
+}
+
+.score-separetor {
+    color: var(--cor-cinza);
+    font-weight: 500;
+    font-size: 16px;
+}
+
+.history-move-title {
+    text-align: center;
+    color: var(--cor-branca);
+    font-size: 16px;
+    font-weight: 700;
+}
+
+.history-card-list {
+    margin-top: 26px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    max-height: 70%;
+    overflow: auto;
+}
+
+.history-move-card {
+    width: 80%;
+    height: 50px;
+    background-color: var(--cor-branca);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    padding-left: 10px;
+    gap: 16px ;
+}
+
+.move-name {
+    font-size: 48px;
+    font-weight: 700;
+    color: var(--cor-cinza);
+}
+
+.move-player-wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 5px;
+}
+
+.move-player-name {
+    font-size: 14px;
+    font-family: 700;
+    color: var(--cor-cinza);
+}
+
+.move-label {
+    font-weight: 400;
+    font-size: 14px;
+    color: var(--azul-escuro);
+}
