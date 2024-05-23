@@ -1,3 +1,5 @@
+const $hostoryMoveList = document.querySelector(".history-card-list")
+
 const game = {
     start: true,
     currentMove: 'X',
@@ -66,7 +68,7 @@ function addPlayerScore(winner) {
 }
 
 function printPlayerScore() {
-    const [  $scoreOne, $scoreTwo] = document.querySelectorAll(".score")
+    const [ $scoreOne, $scoreTwo] = document.querySelectorAll(".score")
 
     $scoreOne.textContent = game.player.scoreOne.toString().padStart(2, '0')
     $scoreTwo.textContent = game.player.scoreTwo.toString().padStart(2, '0')
@@ -118,7 +120,7 @@ function botMove() {
         return botMove()
     }
 
-    play(field)
+    play(field, move)
 
 }
 
@@ -141,7 +143,7 @@ function draw() {
     return false
 }
 
-function play(field) {
+function play(field, position) {
     if(field.textContent !== "" || game.start == false) return
         const { currentMove } = game
         field.textContent = currentMove
@@ -174,10 +176,37 @@ function play(field) {
             }, 1000)
         }
 
-        console.log(hasDraw)
+        const currentPlayerName = getPlayerName(game.currentMove)
+        console.log(currentPlayerName)
 
+        createHistoryMoveCard(game.currentMove, currentPlayerName, position)
         getWinner()
         toggleCurrentMove()
+}
+
+
+function createHistoryMoveCard(move, player, position) {
+    const postionsLebals = [
+        "Primeira Quadrado", 
+        "Segundo Quadrado",
+        "Terceiro Quadrado",
+        "Quarto Quadrado",
+        "Quinto Quadrado",
+        "Sexto Quadrado",
+        "Sétimo Quadrado",
+        "Oitavo Quadrado",
+        "Nono Quadrado"
+    ]
+
+    $hostoryMoveList.innerHTML += `
+    <li class="history-move-card">
+            <span class="move-name">${move}</span>
+        <div class="move-player-wrapper">
+            <span class="move-player-name">${player}</span>
+            <span class="move-label">${postionsLebals[position]}</span>
+        </div>
+    </li>
+    `
 }
 
 function ramdomNumber(max) {
@@ -190,15 +219,20 @@ for(let i = 0 ; i < 9 ; i++) {
     const field = getField(i)
 
     field.addEventListener('click', () => {
-        play(field)
-       if(game.bot.active) {
-           setTimeout(() => {
-               botMove()
-           }, 200)
-       }
+        play(field, i)
+        if(game.bot.active) {
+            setTimeout(() => {
+                botMove()
+            }, 200)
+        }
     })
 }
 
 configSwitcher("switcher-bot", function() {
     game.bot.active = !game.bot.active
+})
+
+
+configSwitcher("switcher-white", function() {
+    
 })
