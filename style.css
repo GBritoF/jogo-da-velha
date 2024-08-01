@@ -175,7 +175,7 @@ body {
     flex-direction: column;
     gap: 20px;
     overflow: auto;
-    max-height: 190px;
+    max-height: 140px;
     padding: 5px;
 }
 
@@ -268,7 +268,7 @@ body {
 }   
 
 .reset-button-wrapper {
-    margin-top: 98px;
+    margin-top: 58px;
 }
 
 .button-white {

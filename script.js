@@ -1,4 +1,5 @@
-const $hostoryMoveList = document.querySelector(".history-card-list")
+const $historyMoveList = document.querySelector(".history-card-list")
+const $historyMatchList = document.querySelector(".match-history-list")
 
 const game = {
     start: true,
@@ -89,6 +90,8 @@ function getPlayerName(move) {
     } else if(move === "O") {
         const $inputPlayerTwo = document.querySelector(".player-field-two")
         return $inputPlayerTwo.value
+    } else {
+        return "Empate"
     }
 }
 
@@ -103,7 +106,6 @@ function configSwitcher(className, callback) {
     $switcher.addEventListener("click", () => {
         $switcher.classList.toggle("switcher-active")
         callback()
-        console.log(game.bot.active)
     })
 }
 
@@ -143,6 +145,10 @@ function draw() {
     return false
 }
 
+function clearHistoryMoves() {
+    $historyMoveList.innerHTML = ""
+}
+
 function play(field, position) {
     if(field.textContent !== "" || game.start == false) return
         const { currentMove } = game
@@ -154,30 +160,31 @@ function play(field, position) {
             addPlayerScore(winner)
             printPlayerScore()
 
-            setTimeout(() => {
-                resetBoard()
-            }, 1000)
-
             game.start = false
 
             setTimeout(() => {
-                game.start = true
+                clearHistoryMoves(),
+                game.start = true,
+                resetBoard()
             }, 1000);
 
             const winnerName = getPlayerName(winner)
             printWinnerName(winnerName)
+            createHistoryMatch()
         }
 
         const hasDraw = draw()
 
         if(hasDraw) {
+            createHistoryMatch()
             setTimeout(() => {
-                resetBoard()
+                resetBoard(),
+                clearHistoryMoves()
             }, 1000)
         }
 
         const currentPlayerName = getPlayerName(game.currentMove)
-        console.log(currentPlayerName)
+        
 
         createHistoryMoveCard(game.currentMove, currentPlayerName, position)
         getWinner()
@@ -198,7 +205,7 @@ function createHistoryMoveCard(move, player, position) {
         "Nono Quadrado"
     ]
 
-    $hostoryMoveList.innerHTML += `
+    $historyMoveList.innerHTML += `
     <li class="history-move-card">
             <span class="move-name">${move}</span>
         <div class="move-player-wrapper">
@@ -209,9 +216,45 @@ function createHistoryMoveCard(move, player, position) {
     `
 }
 
+function createHistoryMatch() {
+    const winner = getWinner()
+    const winnerName = getPlayerName(winner)
+    const scenary = getScinery()
+
+    let scenaryItemListHTML = ''
+
+    for(const move of scenary) {
+        scenaryItemListHTML += `<div class="scenary-field">${move}</div>\n`
+    }
+
+    const html = `
+    <li class="match-history-scenery-wrapper">
+        <div class="match-history-winner-box">
+            <h4 class="winner-label">Vencedor</h4>
+            <span class="winner-name">${winnerName}</span>
+        </div>
+        <span class="match-history-separetor">Cenário</span>
+        <div class="scenary-box scenary-small">
+            ${scenaryItemListHTML}
+        </div>
+    </li>
+    `
+    $historyMatchList.innerHTML += html
+}
+
+function getScinery() {
+    const list = []
+    const $fieldList = document.querySelectorAll(".scenary-field-big")
+
+    for(const $el of $fieldList) {
+        list.push($el.textContent)
+    }
+
+    return list
+}
+
 function ramdomNumber(max) {
     const number = Math.floor(Math.random() * max + 1)
-
     return number
 }
 
